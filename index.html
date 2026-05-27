@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Villa Olimpia Ponza — B&B e Casa Vacanze sull'isola di Ponza. Camere con vista mare, colazione inclusa, terrazza panoramica. Prenota il tuo soggiorno.">
+<title>Villa Olimpia Ponza — B&B Casa Vacanze</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde: #2A6B5E;
+  --verde-deep: #1A4A40;
+  --verde-light: #3D9E8C;
+  --sabbia: #F5ECD9;
+  --sabbia-dark: #E8D9C0;
+  --corallo: #D4614A;
+  --corallo-light: #E8836E;
+  --oro: #C9A84C;
+  --bianco: #FAFAF8;
+  --testo: #1A1A18;
+  --testo2: #4A4A46;
+  --testo3: #8A8A84;
+  --border: rgba(42,107,94,0.12);
+  --ombra: 0 4px 24px rgba(0,0,0,0.08);
+  --ombra-lg: 0 16px 48px rgba(0,0,0,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bianco);
+  color: var(--testo);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 56px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s;
+}
+nav.scrolled {
+  background: rgba(26,74,64,0.97);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.08);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: .02em;
+}
+.nav-logo em { font-style: italic; color: var(--oro); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.82);
+  text-decoration: none;
+  letter-spacing: .03em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #fff; }
+.nav-cta {
+  background: var(--corallo) !important;
+  color: #fff !important;
+  padding: 9px 22px;
+  border-radius: 4px;
+  font-weight: 600 !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--corallo-light) !important; }
+
+/* ─── HERO ─── */
+.hero {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=85') center/cover no-repeat;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26,74,64,0.52) 0%,
+    rgba(26,74,64,0.38) 50%,
+    rgba(26,74,64,0.65) 100%
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 24px;
+  max-width: 860px;
+}
+.hero-eyebrow {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--oro);
+  margin-bottom: 20px;
+  animation: fadeup .8s ease .1s both;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 7vw, 88px);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.06;
+  margin-bottom: 20px;
+  animation: fadeup .8s ease .2s both;
+}
+.hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+}
+.hero-sub {
+  font-size: clamp(16px, 2vw, 20px);
+  color: rgba(255,255,255,0.82);
+  font-weight: 300;
+  max-width: 560px;
+  margin: 0 auto 44px;
+  line-height: 1.65;
+  animation: fadeup .8s ease .3s both;
+}
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeup .8s ease .4s both;
+}
+.btn-primary {
+  background: var(--corallo);
+  color: #fff;
+  padding: 14px 36px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: .04em;
+  transition: all .2s;
+}
+.btn-primary:hover { background: var(--corallo-light); }
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  padding: 14px 36px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  transition: all .2s;
+}
+.btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.5);
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  animation: fadein 1s ease 1.2s both;
+}
+.scroll-line {
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+  animation: scrollpulse 2s ease infinite;
+}
+@keyframes scrollpulse { 0%,100%{opacity:.4;transform:scaleY(.6)} 50%{opacity:1;transform:scaleY(1)} }
+@keyframes fadein { from{opacity:0} to{opacity:1} }
+@keyframes fadeup { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+/* ─── STRIP INFO ─── */
+.strip {
+  background: var(--verde-deep);
+  padding: 22px 56px;
+}
+.strip-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.strip-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.82);
+  font-size: 14px;
+}
+.strip-icon { font-size: 18px; }
+.strip-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.15); }
+
+/* ─── SECTIONS ─── */
+section { padding: 100px 56px; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--verde-light);
+  margin-bottom: 14px;
+}
+.section-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 4vw, 54px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--testo);
+  margin-bottom: 16px;
+}
+.section-h2 em { font-style: italic; color: var(--verde); }
+.section-lead {
+  font-size: 17px;
+  color: var(--testo2);
+  max-width: 560px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ─── CAMERE ─── */
+.camere { background: var(--sabbia); }
+.camere-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+}
+.camera {
+  background: var(--bianco);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--ombra);
+  transition: all .25s;
+}
+.camera:hover { transform: translateY(-6px); box-shadow: var(--ombra-lg); }
+.camera-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform .5s;
+}
+.camera:hover .camera-img { transform: scale(1.04); }
+.camera-body { padding: 24px 22px 28px; }
+.camera-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--testo);
+  margin-bottom: 8px;
+}
+.camera-desc {
+  font-size: 14px;
+  color: var(--testo2);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+.camera-features {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.camera-features li {
+  font-size: 12px;
+  background: var(--sabbia);
+  color: var(--verde);
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-weight: 500;
+}
+.camera-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.camera-prezzo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--verde);
+  line-height: 1;
+}
+.camera-prezzo span { font-size: 14px; color: var(--testo3); font-family: 'DM Sans', sans-serif; font-weight: 400; }
+.btn-camera {
+  background: var(--verde);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .2s;
+}
+.btn-camera:hover { background: var(--verde-light); }
+
+/* ─── SERVIZI ─── */
+.servizi { background: var(--bianco); }
+.servizi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+}
+.servizio {
+  text-align: center;
+  padding: 36px 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all .2s;
+}
+.servizio:hover { background: var(--sabbia); border-color: rgba(42,107,94,0.2); }
+.servizio-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+.servizio-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--testo);
+  margin-bottom: 8px;
+}
+.servizio-desc { font-size: 14px; color: var(--testo2); line-height: 1.6; font-weight: 300; }
+
+/* ─── EXPERIENCE ─── */
+.experience { background: var(--verde-deep); color: #fff; }
+.exp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-top: 56px;
+}
+.exp-img {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--ombra-lg);
+  aspect-ratio: 4/3;
+}
+.exp-img img { width: 100%; height: 100%; object-fit: cover; }
+.exp-content .eyebrow { color: var(--oro); }
+.exp-content .section-h2 { color: #fff; }
+.exp-content .section-h2 em { color: var(--oro); }
+.exp-content .section-lead { color: rgba(255,255,255,0.72); max-width: 100%; }
+.exp-punti {
+  list-style: none;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.exp-punto {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.ep-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--oro);
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+.ep-text { font-size: 15px; color: rgba(255,255,255,0.8); font-weight: 300; line-height: 1.6; }
+
+/* ─── GALLERIA ─── */
+.galleria { background: var(--sabbia); padding-bottom: 80px; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 220px);
+  gap: 12px;
+  margin-top: 48px;
+}
+.gallery-item {
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.gallery-item:first-child {
+  grid-row: span 2;
+  grid-column: span 1;
+}
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .5s;
+}
+.gallery-item:hover img { transform: scale(1.06); }
+
+/* ─── PRENOTAZIONE ─── */
+.prenota { background: var(--bianco); }
+.prenota-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 64px;
+  align-items: start;
+  margin-top: 56px;
+}
+.prenota-info h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--testo);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.prenota-info p {
+  font-size: 15px;
+  color: var(--testo2);
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.prenota-highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ph-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--testo2);
+}
+.ph-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: var(--sabbia);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.form-card {
+  background: var(--bianco);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 40px 36px;
+  box-shadow: var(--ombra-lg);
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--testo2);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.form-control {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #E0DDD6;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--testo);
+  background: var(--bianco);
+  transition: border-color .2s;
+  outline: none;
+}
+.form-control:focus { border-color: var(--verde); }
+.form-control option { background: var(--bianco); }
+.btn-submit {
+  width: 100%;
+  background: var(--verde);
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: .04em;
+  transition: background .2s;
+  margin-top: 4px;
+}
+.btn-submit:hover { background: var(--verde-light); }
+.form-note {
+  font-size: 12px;
+  color: var(--testo3);
+  text-align: center;
+  margin-top: 12px;
+  font-style: italic;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--verde-deep);
+  color: rgba(255,255,255,0.65);
+  padding: 64px 56px 40px;
+}
+.footer-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand .nav-logo { display: block; margin-bottom: 16px; font-size: 24px; }
+.footer-brand p { font-size: 14px; line-height: 1.7; max-width: 300px; }
+.footer-col h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--oro);
+  margin-bottom: 16px;
+  letter-spacing: .04em;
+}
+.footer-col p, .footer-col a {
+  font-size: 14px;
+  line-height: 2;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  display: block;
+  transition: color .2s;
+}
+.footer-col a:hover { color: #fff; }
+.footer-bottom {
+  max-width: 1100px;
+  margin: 24px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+}
+.footer-bottom a { color: rgba(255,255,255,0.35); text-decoration: none; }
+.footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+
+/* ─── REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .camere-grid { grid-template-columns: 1fr 1fr; }
+  .servizi-grid { grid-template-columns: repeat(2,1fr); }
+  .exp-grid { grid-template-columns: 1fr; }
+  .exp-img { aspect-ratio: 16/7; }
+  .gallery-grid { grid-template-rows: repeat(2,180px); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:768px){
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  section { padding: 64px 20px; }
+  .strip { padding: 16px 20px; }
+  .strip-inner { flex-direction: column; gap: 10px; }
+  .strip-divider { display: none; }
+  .camere-grid { grid-template-columns: 1fr; }
+  .servizi-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .gallery-item:first-child { grid-row: span 1; }
+  .prenota-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">Villa <em>Olimpia</em></a>
+  <ul class="nav-links">
+    <li><a href="#camere">Camere</a></li>
+    <li><a href="#servizi">Servizi</a></li>
+    <li><a href="#galleria">Galleria</a></li>
+    <li><a href="#prenota" class="nav-cta">Prenota ora</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Isola di Ponza · B&B e Casa Vacanze</p>
+    <h1>Villa <em>Olimpia</em></h1>
+    <p class="hero-sub">Il tuo rifugio sull'isola di Ponza, tra mare cristallino, natura incontaminata e ospitalità autentica.</p>
+    <div class="hero-actions">
+      <a href="#prenota" class="btn-primary">Prenota il tuo soggiorno</a>
+      <a href="#camere" class="btn-outline">Scopri le camere</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scorri</span>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <div class="strip-item reveal"><span class="strip-icon">📍</span> Via Panoramica, Isola di Ponza</div>
+    <div class="strip-divider"></div>
+    <div class="strip-item reveal reveal-delay-1"><span class="strip-icon">🌅</span> Vista mare da ogni camera</div>
+    <div class="strip-divider"></div>
+    <div class="strip-item reveal reveal-delay-2"><span class="strip-icon">☕</span> Colazione inclusa</div>
+    <div class="strip-divider"></div>
+    <div class="strip-item reveal reveal-delay-3"><span class="strip-icon">🚗</span> Parcheggio gratuito</div>
+    <div class="strip-divider"></div>
+    <div class="strip-item reveal reveal-delay-4"><span class="strip-icon">📅</span> Aperta da Maggio a Ottobre</div>
+  </div>
+</div>
+
+<!-- CAMERE -->
+<section class="camere" id="camere">
+  <div class="section-inner">
+    <p class="eyebrow reveal">Le nostre camere</p>
+    <h2 class="section-h2 reveal">Un soggiorno <em>indimenticabile</em></h2>
+    <p class="section-lead reveal">Tre soluzioni pensate per ogni esigenza, tutte con vista sul mare più bello del Tirreno.</p>
+    <div class="camere-grid">
+      <div class="camera reveal">
+        <img class="camera-img" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80" alt="Camera Standard">
+        <div class="camera-body">
+          <div class="camera-name">Camera Standard</div>
+          <p class="camera-desc">Camera confortevole con tutti i comfort necessari per un soggiorno indimenticabile sull'isola.</p>
+          <ul class="camera-features">
+            <li>Vista mare</li><li>Aria condizionata</li><li>Bagno privato</li><li>Wi-Fi</li>
+          </ul>
+          <div class="camera-footer">
+            <div class="camera-prezzo">€90 <span>/ notte</span></div>
+            <a href="#prenota" class="btn-camera">Prenota</a>
+          </div>
+        </div>
+      </div>
+      <div class="camera reveal reveal-delay-1">
+        <img class="camera-img" src="https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?auto=format&fit=crop&w=800&q=80" alt="Camera Deluxe">
+        <div class="camera-body">
+          <div class="camera-name">Camera Deluxe</div>
+          <p class="camera-desc">Ampia camera con terrazza privata e vista panoramica sul mare. La scelta perfetta per una fuga romantica.</p>
+          <ul class="camera-features">
+            <li>Terrazza privata</li><li>Vista panoramica</li><li>Doccia walk-in</li><li>Frigobar</li>
+          </ul>
+          <div class="camera-footer">
+            <div class="camera-prezzo">€130 <span>/ notte</span></div>
+            <a href="#prenota" class="btn-camera">Prenota</a>
+          </div>
+        </div>
+      </div>
+      <div class="camera reveal reveal-delay-2">
+        <img class="camera-img" src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80" alt="Appartamento Familiare">
+        <div class="camera-body">
+          <div class="camera-name">Appartamento Familiare</div>
+          <p class="camera-desc">Spazioso appartamento con angolo cottura e soggiorno. Ideale per famiglie o soggiorni lunghi.</p>
+          <ul class="camera-features">
+            <li>Angolo cottura</li><li>Soggiorno</li><li>2 camere</li><li>Terrazza</li>
+          </ul>
+          <div class="camera-footer">
+            <div class="camera-prezzo">€180 <span>/ notte</span></div>
+            <a href="#prenota" class="btn-camera">Prenota</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIZI -->
+<section class="servizi" id="servizi">
+  <div class="section-inner">
+    <p class="eyebrow reveal">Cosa offriamo</p>
+    <h2 class="section-h2 reveal">Tutto per una vacanza <em>perfetta</em></h2>
+    <div class="servizi-grid">
+      <div class="servizio reveal">
+        <span class="servizio-icon">☕</span>
+        <div class="servizio-title">Colazione Inclusa</div>
+        <p class="servizio-desc">Ogni mattina una ricca colazione con prodotti locali e vista sul mare.</p>
+      </div>
+      <div class="servizio reveal reveal-delay-1">
+        <span class="servizio-icon">📶</span>
+        <div class="servizio-title">Wi-Fi Gratuito</div>
+        <p class="servizio-desc">Connessione ad alta velocità in tutta la struttura, incluse terrazze e giardino.</p>
+      </div>
+      <div class="servizio reveal reveal-delay-2">
+        <span class="servizio-icon">🌅</span>
+        <div class="servizio-title">Terrazza Panoramica</div>
+        <p class="servizio-desc">Una splendida terrazza con vista mozzafiato sul mare e sui faraglioni.</p>
+      </div>
+      <div class="servizio reveal reveal-delay-3">
+        <span class="servizio-icon">🚗</span>
+        <div class="servizio-title">Parcheggio Gratuito</div>
+        <p class="servizio-desc">Posto auto riservato per tutti gli ospiti, a pochi passi dalla struttura.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience">
+  <div class="section-inner">
+    <div class="exp-grid">
+      <div class="exp-img reveal">
+        <img src="https://images.unsplash.com/photo-1499678329028-101435549a4e?auto=format&fit=crop&w=1400&q=80" alt="Ponza vista mare">
+      </div>
+      <div class="exp-content">
+        <p class="eyebrow reveal">L'isola vi aspetta</p>
+        <h2 class="section-h2 reveal">Ponza è <em>unica</em><br>al mondo</h2>
+        <p class="section-lead reveal">Un'isola dove il tempo rallenta, il mare ha colori impossibili e ogni giorno porta una scoperta nuova.</p>
+        <ul class="exp-punti">
+          <li class="exp-punto reveal reveal-delay-1"><div class="ep-dot"></div><div class="ep-text">Spiagge e calette raggiungibili solo via mare — selvagge, autentiche, incontaminate</div></li>
+          <li class="exp-punto reveal reveal-delay-2"><div class="ep-dot"></div><div class="ep-text">Il porto di Ponza, le case colorate, la passeggiata serale — la vita vera dell'isola</div></li>
+          <li class="exp-punto reveal reveal-delay-3"><div class="ep-dot"></div><div class="ep-text">Cucina tipica ponzese — pesce fresco, pasta e patate, dolci della tradizione locale</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERIA -->
+<section class="galleria" id="galleria">
+  <div class="section-inner">
+    <p class="eyebrow reveal">Galleria</p>
+    <h2 class="section-h2 reveal">La bellezza di <em>Ponza</em></h2>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&w=800&q=80" alt="Ponza">
+      </div>
+      <div class="gallery-item reveal reveal-delay-1">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Mare">
+      </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img src="https://images.unsplash.com/photo-1615880484746-a134be9a6ecf?auto=format&fit=crop&w=800&q=80" alt="Camera">
+      </div>
+      <div class="gallery-item reveal reveal-delay-1">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="Colazione">
+      </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80" alt="Tramonto">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRENOTAZIONE -->
+<section class="prenota" id="prenota">
+  <div class="section-inner">
+    <p class="eyebrow reveal">Prenota il tuo soggiorno</p>
+    <h2 class="section-h2 reveal">Inizia il tuo <em>viaggio</em></h2>
+    <div class="prenota-grid">
+      <div class="prenota-info reveal">
+        <h3>Verifica disponibilità e prenota direttamente con noi.</h3>
+        <p>Compila il form con le date del tuo soggiorno e le tue preferenze. Ti risponderemo entro 24 ore per confermare la disponibilità e i dettagli.</p>
+        <ul class="prenota-highlights">
+          <li class="ph-item"><div class="ph-icon">✅</div>Nessun costo di prenotazione</li>
+          <li class="ph-item"><div class="ph-icon">💳</div>Pagamento all'arrivo</li>
+          <li class="ph-item"><div class="ph-icon">🔄</div>Cancellazione gratuita fino a 7 giorni prima</li>
+          <li class="ph-item"><div class="ph-icon">🗣️</div>Risposta entro 24 ore</li>
+        </ul>
+      </div>
+      <div class="form-card reveal reveal-delay-1">
+        <form id="booking-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="checkin">Check-in</label>
+              <input type="date" id="checkin" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="checkout">Check-out</label>
+              <input type="date" id="checkout" class="form-control" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="adulti">Adulti</label>
+              <select id="adulti" class="form-control">
+                <option value="1">1</option>
+                <option value="2" selected>2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="bambini">Bambini</label>
+              <select id="bambini" class="form-control">
+                <option value="0" selected>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="camera">Tipo di camera</label>
+            <select id="camera" class="form-control">
+              <option value="standard">Camera Standard — €90/notte</option>
+              <option value="deluxe">Camera Deluxe — €130/notte</option>
+              <option value="familiare">Appartamento Familiare — €180/notte</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="nome">Nome e Cognome</label>
+            <input type="text" id="nome" class="form-control" placeholder="Il tuo nome" required>
+          </div>
+          <div class="form-group">
+            <label for="email-contact">Email di contatto</label>
+            <input type="email" id="email-contact" class="form-control" placeholder="La tua email" required>
+          </div>
+          <div class="form-group">
+            <label for="note">Note (facoltativo)</label>
+            <input type="text" id="note" class="form-control" placeholder="Richieste speciali, esigenze particolari...">
+          </div>
+          <button type="submit" class="btn-submit">Invia richiesta di prenotazione →</button>
+          <p class="form-note">Riceverai risposta entro 24 ore all'email indicata.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contatti">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Villa <em>Olimpia</em></a>
+      <p>B&B e Casa Vacanze sull'isola di Ponza. Un luogo dove il mare, la natura e l'ospitalità autentica si incontrano.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Informazioni</h4>
+      <p>📍 Via Panoramica, Ponza (LT)</p>
+      <p>📅 Aperta Maggio–Ottobre</p>
+      <p>✉️ info@villaolimpiaponza.it</p>
+    </div>
+    <div class="footer-col">
+      <h4>Link utili</h4>
+      <a href="#camere">Le nostre camere</a>
+      <a href="#servizi">Servizi inclusi</a>
+      <a href="#prenota">Prenota ora</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Villa Olimpia Ponza · Tutti i diritti riservati</span>
+    <span>Powered by <a href="https://neuraccent.com" target="_blank" rel="noopener">Neuraccent.com</a></span>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+// Set min check-in date to today
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('checkin').min = today;
+document.getElementById('checkout').min = today;
+document.getElementById('checkin').addEventListener('change', function() {
+  document.getElementById('checkout').min = this.value;
+});
+
+// Form → mailto
+document.getElementById('booking-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const checkin  = document.getElementById('checkin').value;
+  const checkout = document.getElementById('checkout').value;
+  const adulti   = document.getElementById('adulti').value;
+  const bambini  = document.getElementById('bambini').value;
+  const camera   = document.getElementById('camera').options[document.getElementById('camera').selectedIndex].text;
+  const nome     = document.getElementById('nome').value.trim();
+  const email    = document.getElementById('email-contact').value.trim();
+  const note     = document.getElementById('note').value.trim();
+
+  if (!checkin || !checkout || !nome || !email) {
+    alert('Compila tutti i campi obbligatori.'); return;
+  }
+
+  const subject = encodeURIComponent('Villa Olimpia Ponza — Richiesta prenotazione');
+  const body = encodeURIComponent(
+`Booking request — Villa Olimpia Ponza
+
+Name: ${nome}
+Email: ${email}
+Check-in: ${checkin}
+Check-out: ${checkout}
+Adults: ${adulti}
+Children: ${bambini}
+Room: ${camera}
+${note ? `Notes: ${note}` : ''}`
+  );
+
+  window.location.href = `mailto:albertofine@gmail.com?subject=${subject}&body=${body}`;
+
+  setTimeout(() => {
+    this.style.display = 'none';
+    this.insertAdjacentHTML('afterend',
+      '<div style="text-align:center;padding:40px 20px"><p style="font-size:20px;color:var(--verde);font-family:Cormorant Garamond,serif;font-weight:600;margin-bottom:8px">✅ Richiesta inviata!</p><p style="font-size:14px;color:var(--testo2)">Ti risponderemo entro 24 ore all\'email indicata.</p></div>'
+    );
+  }, 800);
+});
+</script>
+</body>
+</html>
